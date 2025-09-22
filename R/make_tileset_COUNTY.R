@@ -10,9 +10,9 @@
 # MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
 # MAPBOX_USERNAME = "rbaxterk"
 
-STATE = "CA" # "MA"
-COUNTIES = "Los Angeles" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
-TILESET_ID = "los_angeles_september"
+STATE = "MA" # "MA"
+COUNTIES = c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
+TILESET_ID = "massachusetts_september_COUNTIES"
 MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
 MAPBOX_USERNAME = "rbaxterk"
 
@@ -27,7 +27,7 @@ library(mapboxapi)
 vars = c(pop="P009001", pop_white="P009005", pop_black="P009006",
          pop_hisp="P009002")
 
-d = get_decennial("block", 
+d = get_decennial("county", 
                   year = 2010, # Added, should change to 2020
                   variables=vars, state=STATE, county=COUNTIES,
                   output="wide", geometry=T)
@@ -45,8 +45,8 @@ cat("Census data downloaded.\n")
 cat("Adjacency graph created.\n")
 
 mbtile_name = paste0("R/data/", TILESET_ID, ".mbtiles")
-tippecanoe(d, mbtile_name, layer_name="blocks",
-           min_zoom=10, max_zoom=12,
+tippecanoe(d, mbtile_name, layer_name="counties",
+           min_zoom=6, max_zoom=9,
            other_options="--coalesce-densest-as-needed --detect-shared-borders --use-attribute-for-id=GEOID")
 cat("Vector tiles created.\n")
 
