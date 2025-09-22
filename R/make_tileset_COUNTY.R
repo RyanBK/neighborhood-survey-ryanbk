@@ -24,6 +24,7 @@ library(jsonlite)
 library(mapboxapi)
 
 # Census variables you wish to include in the tileset
+# DO THESE NEED TO BE DROPPED? DO THEY EXIST FOR COUNTY OR JUST BLOCKED?
 vars = c(pop="P009001", pop_white="P009005", pop_black="P009006",
          pop_hisp="P009002")
 
