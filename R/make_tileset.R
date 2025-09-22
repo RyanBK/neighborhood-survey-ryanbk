@@ -16,9 +16,15 @@
 # MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
 # MAPBOX_USERNAME = "rbaxterk"
 
-STATE = "NY" # "MA"
-COUNTIES = "Kings" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
-TILESET_ID = "ny_brooklyn_september"
+# STATE = "NY" # "MA"
+# COUNTIES = "Kings" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
+# TILESET_ID = "ny_brooklyn_september"
+# MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
+# MAPBOX_USERNAME = "rbaxterk"
+
+STATE = "NV" # "MA"
+COUNTIES = "Washoe" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
+TILESET_ID = "nv_washoe_september"
 MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
 MAPBOX_USERNAME = "rbaxterk"
 
