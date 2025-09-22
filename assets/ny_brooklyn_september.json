@@ -1,1 +1,23 @@
-{"units":{"name":["Blocks"],"id":["blocks"],"idColumn":{"key":["GEOID"],"name":["GEOID"]},"bounds":[[-74.0566,40.551],[-73.8334,40.7394]],"zoomTo":[14],"tileset":{"type":["fill"],"source":{"type":["vector"],"url":["mapbox://rbaxterk.ny_brooklyn_september"]},"sourceLayer":["blocks"]}}}
+{
+  "units": {
+    "name": "Blocks",
+    "id": "blocks",
+    "idColumn": {
+      "key": "GEOID",
+      "name": "GEOID"
+    },
+    "bounds": [
+      [-74.0566, 40.551],
+      [-73.8334, 40.7394]
+    ],
+    "zoomTo": 14,
+    "tileset": {
+      "type": "fill",
+      "source": {
+        "type": "vector",
+        "url": "mapbox://rbaxterk.ny_brooklyn_september"
+      },
+      "sourceLayer": "blocks"
+    }
+  }
+}
