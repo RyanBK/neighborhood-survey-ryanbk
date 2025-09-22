@@ -1,19 +1,7 @@
-# STATE = "TN" # "MA"
-# COUNTIES = "Davidson" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
-# TILESET_ID = "tennessee_september"
-# MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
-# MAPBOX_USERNAME = "rbaxterk"
-
-# STATE = "MA" # "MA"
-# COUNTIES = "Middlesex" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
-# TILESET_ID = "middlesex_september"
-# MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
-# MAPBOX_USERNAME = "rbaxterk"
-
-STATE = "CA" # "MA"
-COUNTIES = "Los Angeles" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
-TILESET_ID = "los_angeles_september"
-MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
+STATE = "TN"
+COUNTIES = c("Davidson") # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
+TILESET_ID = "TN_davidson"
+MAPBOX_SECRET_TOKEN = "sk.eyJ1IjoicmJheHRlcmsiLCJhIjoiY21lb203Zm9nMDU5ejJscTFlbW85aHRzayJ9.QRxSO_0XiAEle_Dcp_uWfA"
 MAPBOX_USERNAME = "rbaxterk"
 
 library(tidycensus)
@@ -34,13 +22,13 @@ d = get_decennial("block",
 cat("Census data downloaded.\n")
 
 {
-  g = poly2nb(d, queen=F)
-  ids = d$GEOID
-  class(g) = "list"
-  names(g) = ids
-  g = map(g, ~ ids[.])
-  
-  write_json(g, paste0("assets/", TILESET_ID, "_graph.json"))
+g = poly2nb(d, queen=F)
+ids = d$GEOID
+class(g) = "list"
+names(g) = ids
+g = map(g, ~ ids[.])
+
+write_json(g, paste0("assets/", TILESET_ID, "_graph.json"))
 }
 cat("Adjacency graph created.\n")
 
@@ -57,9 +45,8 @@ upload_tiles(input=mbtile_name, access_token=MAPBOX_SECRET_TOKEN,
 cat("Tileset uploaded.\n")
 
 # spec = read_json("assets/boston.json", simplifyVector=T) # SHOULD THIS BE CHANGED?
-spec = read_json(str_glue("assets/template.json"), simplifyVector=T) # RENAMED boston.json to template.json
+spec = read_json(str_glue("assets/{TILESET_ID}.json"), simplifyVector=T) # CHANGING TO THIS TILESET_ID
 spec$units$bounds = matrix(st_bbox(d), nrow=2, byrow=T)
-# spec$units$tilesets$source.url = str_glue("mapbox://{MAPBOX_USERNAME}.{TILESET_ID}")
-spec$units$tileset$source$url = str_glue("mapbox://{MAPBOX_USERNAME}.{TILESET_ID}")
+spec$units$tilesets$source.url = str_glue("mapbox://{MAPBOX_USERNAME}.{TILESET_ID}")
 write_json(spec, paste0("assets/", TILESET_ID, ".json"))
 cat("Specification written.\n")
