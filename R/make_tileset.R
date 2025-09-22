@@ -1,6 +1,12 @@
-STATE = "TN" # "MA"
-COUNTIES = "Davidson" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
-TILESET_ID = "tennessee_september"
+# STATE = "TN" # "MA"
+# COUNTIES = "Davidson" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
+# TILESET_ID = "tennessee_september"
+# MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
+# MAPBOX_USERNAME = "rbaxterk"
+
+STATE = "MA" # "MA"
+COUNTIES = "Middlesex" # c("Suffolk", "Middlesex", "Norfolk", "Essex", "Plymouth")
+TILESET_ID = "middlesex_september"
 MAPBOX_SECRET_TOKEN = rstudioapi::askForPassword()
 MAPBOX_USERNAME = "rbaxterk"
 
@@ -47,6 +53,7 @@ cat("Tileset uploaded.\n")
 # spec = read_json("assets/boston.json", simplifyVector=T) # SHOULD THIS BE CHANGED?
 spec = read_json(str_glue("assets/template.json"), simplifyVector=T) # RENAMED boston.json to template.json
 spec$units$bounds = matrix(st_bbox(d), nrow=2, byrow=T)
-spec$units$tilesets$source.url = str_glue("mapbox://{MAPBOX_USERNAME}.{TILESET_ID}")
+# spec$units$tilesets$source.url = str_glue("mapbox://{MAPBOX_USERNAME}.{TILESET_ID}")
+spec$units$tileset$source$url = str_glue("mapbox://{MAPBOX_USERNAME}.{TILESET_ID}")
 write_json(spec, paste0("assets/", TILESET_ID, ".json"))
 cat("Specification written.\n")
