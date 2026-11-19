@@ -1,0 +1,24 @@
+{
+  "units": {
+    "name": "Census blocks",
+    "id": "blocks",
+    "idColumn": {
+      "key": "GEOID",
+      "name": "GEOID"
+    },
+    "bounds": [
+      [-121.111952, 34.08665],
+      [-112.862197, 43.030518]
+    ],
+    "zoomTo": 13,
+    "tileset": {
+      "type": "fill",
+      "source": {
+        "type": "vector",
+        "url": "mapbox://rbaxterk.blocks_nevada_50mi"
+      },
+      "sourceLayer": "blocks"
+    },
+    "minZoom": 11
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "units": {
+    "name": "Census tracts (large ones split into block groups and blocks)",
+    "id": "tracts",
+    "idColumn": {
+      "key": "GEOID",
+      "name": "GEOID"
+    },
+    "bounds": [
+      [-124.566244, 31.332341],
+      [-109.041832, 49.000846]
+    ],
+    "zoomTo": 7,
+    "tileset": {
+      "type": "fill",
+      "source": {
+        "type": "vector",
+        "url": "mapbox://rbaxterk.tracts_mixed_nevada_region"
+      },
+      "sourceLayer": "tracts"
+    },
+    "minZoom": 6
+  }
+}
