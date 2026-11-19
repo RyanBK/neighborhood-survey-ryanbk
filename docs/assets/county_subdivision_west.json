@@ -1,0 +1,24 @@
+{
+  "units": {
+    "name": "County subdivisions",
+    "id": "cousubs",
+    "idColumn": {
+      "key": "GEOID",
+      "name": "GEOID"
+    },
+    "bounds": [
+      [-124.763068, 28.971612],
+      [-101.277931, 49.002494]
+    ],
+    "zoomTo": 8,
+    "tileset": {
+      "type": "fill",
+      "source": {
+        "type": "vector",
+        "url": "mapbox://rbaxterk.county_subdivision_west"
+      },
+      "sourceLayer": "cousubs"
+    },
+    "minZoom": 3
+  }
+}
